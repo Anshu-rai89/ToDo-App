@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title>
+            <%= locals.title%>
+        </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>jQuery UI Datepicker - Default functionality</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/style.css">
+        
+    </head>
+    <body>
+
+     <div class="title"> ToDo APP </div>
+     <div class="form"> <form action="/create-list" method="POST">
+
+        <!-- Our Description Box-->
+       <div class="bd1"> <div class="desc">
+            <label style="color: grey;">DESCRIPTION</label><br>
+        <input  class="none"type="text" name="desc" placeholder="Write what you want to add" required></div></div>
+       
+       <!--Category and Date box -->
+        <div class="bd2"> <div class="category"><label style="color: grey;">Category</label> <select  name="category" class="drop">
+            <option value="none" style="color: grey;" selected > 
+                    choose a category
+                </option>   
+        <option value = "work">work</option>
+            <option value = "personal">personal</option>
+            <option value = "school">school</option>
+            <option value = "cleaning">cleaning</option>
+            <option value = "others">others</option>
+          </select></div>
+       <div class="date"><label style="color: grey;">Due Date</label>
+        <br><input class="none"type="text" name="date" id="date_picker"placeholder="mm//dd//yy" required></div> </div><br>
+        <button  class="add-button"type="submit"> <i class="fas fa-plus" style= "height:80%;color:white;margin-left:-35px ;margin-right:30px"></i>Add Task</button>
+    
+    </form>
+    <button id="del" class="delete-button"type="submit"><i class="far fa-trash-alt" style= "height:80%;color:white ;margin-right:30px"></i>Delete Task</button>
+    </div>
+
+    <!--Printing our LIst from here -->
+        <div class="list">
+            <ul style="list-style-type: none">
+                   
+                <% for (let i of list) { %> 
+                   <div > 
+                        <li>
+                            <div class="list" ><p class="item1"><input class="check"type="checkbox" value="%=i%"><%= i.description %> <span class="item2" id="ct1"><%=i.category%></span> <br> <span class="item3"><i class="far fa-calendar-alt" style= "margin-left:30px;height:20px; width:20px;color:black;font-size:15px"></i><%= i.date %></span></p>
+                    
+                        </li>
+                    </div>
+                  
+                <% } %>
+            </ul>
+
+
+
+        </div>
+
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+
+            // Script to add datepicker 
+        $( function() {
+          $( "#date_picker" ).datepicker();
+        } );
+
+        // jquery code to delete list which is checked
+        $("#del").on("click",function(){
+    $("input:checkbox").each(function() {
+        if ($(this).is(":checked")) {
+            $(this).parent().remove();
+            //var v=$(this).val();
+            
+
+        }
+    });
+});
+
+   var a= $("#ct1").val();
+   console.log(a);
+        </script>
+    
+    </body>
+</html>
