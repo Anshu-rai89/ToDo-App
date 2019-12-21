@@ -85,10 +85,6 @@ select > option {
    
    margin: 20px;
 }
-.list:hover
-{
-   background-color: grey;
-}
 
 .add-button
 {
@@ -101,11 +97,12 @@ select > option {
 }
 
 .list
-{
+{    
+   justify-content: space-between;
    height: 100px;
    width: 100%;
    margin-bottom: 20px;
-   color:grey;
+   color:lightgrey;
    font-size:10px;
 }
 
@@ -116,10 +113,11 @@ select > option {
      color: black;
      margin-bottom: -10px;
      margin-left:20px;
+     
     
 }
 
-.item2
+#item2
 {
      height:60px;
      margin-right:100px;
@@ -127,7 +125,8 @@ select > option {
      font-size:20px;
      background-color: yellow;
      border:5px solid yellow;
-     margin-left: 70%;
+     margin-left:90%;
+     margin-right:80px;
 
 } 
 

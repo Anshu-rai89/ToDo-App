@@ -57,6 +57,31 @@ app.post('/create-list',function(req,res)
 
 
 
+app.get('/delete-contact',function(req,res)
+{   if(req.xhr)
+    {
+   
+    let id=req.query.id;
+    console.log("deleting from databse ",id);
+
+    List.findByIdAndDelete(id,function(err)
+    {
+         if(err) { console.log("Errorin deleteing "); return ;} 
+
+         return res.status(200).json(
+             {
+                 data:
+                 {
+                     message:"Task Deleted"
+                 }
+             }
+         );
+    });
+    }
+   
+});
+
+
 // firing our server here
 app.listen(port,function(err)
 {

@@ -39,7 +39,7 @@
         <button  class="add-button"type="submit"> <i class="fas fa-plus" style= "height:80%;color:white;margin-left:-35px ;margin-right:30px"></i>Add Task</button>
     
     </form>
-    <button id="del" class="delete-button"type="submit"><i class="far fa-trash-alt" style= "height:80%;color:white ;margin-right:30px"></i>Delete Task</button>
+   <button id="del" class="delete-button"type="submit"><i class="far fa-trash-alt" style= "height:80%;color:white ;margin-right:30px"></i>Delete Task</button>
     </div>
 
     <!--Printing our LIst from here -->
@@ -49,7 +49,7 @@
                 <% for (let i of list) { %> 
                    <div > 
                         <li>
-                            <div class="list" ><p class="item1"><input class="check"type="checkbox" value="%=i%"><%= i.description %> <span class="item2" id="ct1"><%=i.category%></span> <br> <span class="item3"><i class="far fa-calendar-alt" style= "margin-left:30px;height:20px; width:20px;color:black;font-size:15px"></i><%= i.date %></span></p>
+                            <div class="list" ><p class="item1"><input class="check"type="checkbox" value="<%=i._id%>"><%= i.description %> <span id="item2" value="<%=i.category%>"><%=i.category%></span> <br> <span id="item3"><i class="far fa-calendar-alt" style= "margin-left:20px;height:20px; width:20px;color:black;font-size:15px"></i><%= i.date %></span></p>
                     
                         </li>
                     </div>
@@ -63,28 +63,9 @@
 
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script>
+        <script src='/js/home.js'></script>
 
-            // Script to add datepicker 
-        $( function() {
-          $( "#date_picker" ).datepicker();
-        } );
 
-        // jquery code to delete list which is checked
-        $("#del").on("click",function(){
-    $("input:checkbox").each(function() {
-        if ($(this).is(":checked")) {
-            $(this).parent().remove();
-            //var v=$(this).val();
-            
-
-        }
-    });
-});
-
-   var a= $("#ct1").val();
-   console.log(a);
-        </script>
     
     </body>
 </html>
